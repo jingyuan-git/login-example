@@ -8,15 +8,13 @@ import { HOME_URL } from "@/config/config";
 import { connect } from "react-redux";
 import { setToken } from "@/redux/modules/global/action";
 import { useTranslation } from "react-i18next";
-import { setTabsList } from "@/redux/modules/tabs/action";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 const { Option } = Select;
 
 const RegisterForm = (props: any) => {
 	const { t } = useTranslation();
-	const { setToken, setTabsList } = props;
-	// const { setToken } = props;
+	const { setToken } = props;
 	const navigate = useNavigate();
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState<boolean>(false);
@@ -29,7 +27,6 @@ const RegisterForm = (props: any) => {
 			console.log("loginForm", registerForm)
 			const { data } = await registerApi(registerForm);
 			setToken(data?.access_token);
-			setTabsList([]);
 			message.success("登录成功！");
 			navigate(HOME_URL);
 		} finally {
@@ -185,6 +182,5 @@ const RegisterForm = (props: any) => {
 	);
 };
 
-const mapDispatchToProps = { setToken, setTabsList };
-// const mapDispatchToProps = { setToken };
+const mapDispatchToProps = { setToken };
 export default connect(null, mapDispatchToProps)(RegisterForm);

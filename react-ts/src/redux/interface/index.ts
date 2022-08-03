@@ -22,12 +22,6 @@ export interface MenuState {
 	menuList: Menu.MenuOptions[];
 }
 
-/* TabsState */
-export interface TabsState {
-	tabsActive: string;
-	tabsList: Menu.MenuOptions[];
-}
-
 /* BreadcrumbState */
 export interface BreadcrumbState {
 	breadcrumbList: {
