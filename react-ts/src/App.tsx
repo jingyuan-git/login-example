@@ -8,7 +8,7 @@ import { setLanguage } from "@/redux/modules/global/action";
 import { connect } from "react-redux";
 
 import reactLogo from './assets/react.svg'
-import './App.css'
+// import './App.css'
 
 const App = (props: any) => {
   const { assemblySize } = props;
