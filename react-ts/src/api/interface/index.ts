@@ -26,10 +26,27 @@ export interface ReqPage {
 // * 登录
 export namespace Login {
 	export interface ReqLoginForm {
-		username: string;
+		email: string;
 		password: string;
 	}
 	export interface ResLogin {
+		access_token: string;
+	}
+	export interface ResAuthButtons {
+		[propName: string]: any;
+	}
+}
+
+// * 登录
+export namespace Register {
+	export interface ReqRegisterForm {
+		password: string,
+		email: string,
+		nickname: string,
+		phone: string,
+		gender: string,
+	}
+	export interface ResRegister {
 		access_token: string;
 	}
 	export interface ResAuthButtons {
