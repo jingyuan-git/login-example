@@ -1,6 +1,6 @@
 import md5 from "js-md5";
 import { useState } from "react";
-import { Button, Form, Input, message } from "antd";
+import { Button, Form, Input, message, Checkbox } from "antd";
 import { useNavigate } from "react-router-dom";
 import { Login } from "@/api/interface";
 import { loginApi } from "@/api/modules/login";
@@ -8,12 +8,10 @@ import { HOME_URL } from "@/config/config";
 import { connect } from "react-redux";
 import { setToken } from "@/redux/modules/global/action";
 import { useTranslation } from "react-i18next";
-// import { setTabsList } from "@/redux/modules/tabs/action";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 const LoginForm = (props: any) => {
 	const { t } = useTranslation();
-	// const { setToken, setTabsList } = props;
 	const { setToken } = props;
 	const navigate = useNavigate();
 	const [form] = Form.useForm();
@@ -24,9 +22,9 @@ const LoginForm = (props: any) => {
 		try {
 			setLoading(true);
 			loginForm.password = md5(loginForm.password);
+			console.log("loginForm", loginForm)
 			const { data } = await loginApi(loginForm);
 			setToken(data?.access_token);
-			// setTabsList([]);
 			message.success("登录成功！");
 			navigate(HOME_URL);
 		} finally {
@@ -38,40 +36,70 @@ const LoginForm = (props: any) => {
 		console.log("Failed:", errorInfo);
 	};
 
+	const pwdValidator = (rule: any, value: any, callback: any) => {
+		if (!value) {
+			return Promise.reject(
+				'Please input your password!');
+		} else if (value.length < 6) {
+			return Promise.reject(
+				"Password must be larger than 6 characters!");
+		}
+		return Promise.resolve();
+	}
+
 	return (
 		<Form
 			form={form}
 			name="basic"
-			labelCol={{ span: 5 }}
+			labelCol={{ span: 8 }}
+			wrapperCol={{ span: 16 }}
 			initialValues={{ remember: true }}
 			onFinish={onFinish}
 			onFinishFailed={onFinishFailed}
-			size="large"
 			autoComplete="off"
+			className='login-form'
 		>
-			<Form.Item name="username" rules={[{ required: true, message: "请输入用户名" }]}>
-				<Input placeholder="用户名：admin / user" prefix={<UserOutlined />} />
+			<Form.Item
+				label="E-mail"
+				name="email"
+				rules={[
+					{
+						type: 'email',
+						message: 'The input is not valid E-mail!',
+					},
+					{
+						required: true,
+						message: 'Please input your E-mail!'
+					},
+				]}
+			>
+				<Input prefix={<UserOutlined className="site-form-item-icon" />} placeholder="E-mail" />
 			</Form.Item>
-			<Form.Item name="password" rules={[{ required: true, message: "请输入密码" }]}>
-				<Input.Password autoComplete="new-password" placeholder="密码：123456" prefix={<LockOutlined />} />
+
+			<Form.Item
+				label="Password"
+				name="password"
+				rules={[
+					{ validator: pwdValidator },
+					{ required: true },
+				]}
+			>
+				<Input
+					prefix={<LockOutlined className="site-form-item-icon" />}
+					type="password"
+					placeholder="Password"
+				/>
 			</Form.Item>
-			<Form.Item className="login-btn">
-				<Button
-					onClick={() => {
-						form.resetFields();
-					}}
-					icon={<CloseCircleOutlined />}
-				>
-					{t("login.reset")}
+
+			<Form.Item wrapperCol={{ offset: 8, span: 16 }} >
+				<Button type="primary" htmlType="submit" className="login-btn">
+					Login
 				</Button>
-				<Button type="primary" htmlType="submit" loading={loading} icon={<UserOutlined />}>
-					{t("login.confirm")}
-				</Button>
+				Or <a href="#/register">register now!</a>
 			</Form.Item>
-		</Form>
+		</Form >
 	);
 };
 
-// const mapDispatchToProps = { setToken, setTabsList };
 const mapDispatchToProps = { setToken };
 export default connect(null, mapDispatchToProps)(LoginForm);
