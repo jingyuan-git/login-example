@@ -9,9 +9,9 @@ const BreadcrumbNav = (props: any) => {
 
 	return (
 		<Breadcrumb>
-			<Breadcrumb.Item href={`#${HOME_URL}`}>首页</Breadcrumb.Item>
+			<Breadcrumb.Item href={`#${HOME_URL}`}>Home Page</Breadcrumb.Item>
 			{breadcrumbList.map((item: string) => {
-				return <Breadcrumb.Item key={item}>{item !== "首页" ? item : null}</Breadcrumb.Item>;
+				return <Breadcrumb.Item key={item}>{item !== "Home Page" ? item : null}</Breadcrumb.Item>;
 			})}
 		</Breadcrumb>
 	);
