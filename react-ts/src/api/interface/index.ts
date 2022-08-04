@@ -77,3 +77,36 @@ export namespace User {
 		status: number;
 	}
 }
+
+// * dashboard
+export namespace Dashboard {
+	export interface ReqDashboardForm {
+	}
+	export interface ResDashboard {
+		MemTotal: string;
+		MemUsed: string;
+		MemUsedPercent: number;
+
+		DiskTotal: string;
+		DiskUsed: string;
+		DiskUsedPercent: number;
+
+		HostOS: string;
+		HostName: string;
+
+		CpuName: string;
+		CpuCores: number;
+		CpuUsedPercent: number;
+
+		GoPath: string;
+		GoVersion: string;
+		Goroutine: number;
+		ProjectPath: string;
+		// Env         string
+		Host: string;
+		GoOS: string;
+		GoArch: string;
+
+		ProjectVersion: string;
+	}
+}
