@@ -11,6 +11,8 @@ import eslintPlugin from "vite-plugin-eslint";
 export default defineConfig((mode: ConfigEnv): UserConfig => {
   const env = loadEnv(mode.mode, process.cwd());
   const viteEnv = wrapperEnv(env);
+  console.log("viteEnv.VITE_APP_BASE_URL", viteEnv.VITE_APP_BASE_URL)
+  console.log("viteEnv", viteEnv)
 
   return {
     // base: "/",
@@ -42,7 +44,7 @@ export default defineConfig((mode: ConfigEnv): UserConfig => {
       // 代理跨域（mock 不需要配置，这里只是个事列）
       proxy: {
         "/api": {
-          target: "https://mock.mengxuegu.com/mock/62abda3212c1416424630a45", // easymock
+          target: viteEnv.VITE_APP_BASE_URL,
           changeOrigin: true,
           rewrite: path => path.replace(/^\/api/, "")
         }

@@ -1,4 +1,4 @@
-import fs from "fs";
+// import fs from "fs";
 import path from "path";
 import dotenv from "dotenv";
 
@@ -48,14 +48,14 @@ export function wrapperEnv(envConf: Recordable): ViteEnv {
  */
 export function getEnvConfig(match = "VITE_GLOB_", confFiles = [".env", ".env.production"]) {
 	let envConfig = {};
-	confFiles.forEach(item => {
-		try {
-			const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), item)));
-			envConfig = { ...envConfig, ...env };
-		} catch (error) {
-			console.error(`Error in parsing ${item}`, error);
-		}
-	});
+	// confFiles.forEach(item => {
+	// 	try {
+	// 		const env = dotenv.parse(fs.readFileSync(path.resolve(process.cwd(), item)));
+	// 		envConfig = { ...envConfig, ...env };
+	// 	} catch (error) {
+	// 		console.error(`Error in parsing ${item}`, error);
+	// 	}
+	// });
 
 	Object.keys(envConfig).forEach(key => {
 		const reg = new RegExp(`^(${match})`);
