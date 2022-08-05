@@ -7,13 +7,14 @@ require (
 	github.com/gin-gonic/gin v1.7.7
 	github.com/go-sql-driver/mysql v1.5.0
 	github.com/gocarina/gocsv v0.0.0-20220531201732-5f969b02b902
-	github.com/jordan-wright/email v4.0.1-0.20210109023952-943e75fe5223+incompatible
 	github.com/satori/go.uuid v1.2.0
+	github.com/shirou/gopsutil v3.21.11+incompatible
 	gorm.io/driver/postgres v1.3.7
 	gorm.io/gorm v1.23.5
 )
 
 require (
+	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/jackc/chunkreader/v2 v2.0.1 // indirect
 	github.com/jackc/pgconn v1.12.1 // indirect
 	github.com/jackc/pgio v1.0.0 // indirect
@@ -25,6 +26,9 @@ require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.4 // indirect
 	github.com/shiena/ansicolor v0.0.0-20151119151921-a422bbe96644 // indirect
+	github.com/tklauser/go-sysconf v0.3.10 // indirect
+	github.com/tklauser/numcpus v0.4.0 // indirect
+	github.com/yusufpapurcu/wmi v1.2.2 // indirect
 	golang.org/x/text v0.3.7 // indirect
 	google.golang.org/protobuf v1.23.0 // indirect
 )
@@ -44,6 +48,6 @@ require (
 	github.com/modern-go/reflect2 v1.0.1 // indirect
 	github.com/ugorji/go/codec v1.1.7 // indirect
 	golang.org/x/crypto v0.0.0-20210921155107-089bfa567519 // indirect
-	golang.org/x/sys v0.0.0-20210615035016-665e8c7367d1 // indirect
+	golang.org/x/sys v0.0.0-20220128215802-99c3d69c2c27 // indirect
 	gopkg.in/yaml.v2 v2.2.8 // indirect
 )
