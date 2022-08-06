@@ -68,7 +68,7 @@ const DashboardInfo: React.FC = () => {
 				<Col key={2} span={24 / colCount}>
 					<div className="card border-secondary">
 						<header className="card-header">
-							<div className="card-title">Disk Information:<span className="badge badge-pill badge-warning"></span> </div>
+							<div className="card-title">Disk Information<span className="badge badge-pill badge-warning"></span> </div>
 						</header>
 						<div className="card-body">
 							<p>Totol: {data?.DiskTotal}</p>

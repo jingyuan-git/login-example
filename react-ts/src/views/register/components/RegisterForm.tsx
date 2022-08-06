@@ -26,8 +26,7 @@ const RegisterForm = (props: any) => {
 			registerForm.password = md5(registerForm.password);
 			console.log("loginForm", registerForm)
 			const { data } = await registerApi(registerForm);
-			setToken(data?.access_token);
-			message.success("登录成功！");
+			message.success("Register success!");
 			navigate(HOME_URL);
 		} finally {
 			setLoading(false);
