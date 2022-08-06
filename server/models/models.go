@@ -45,14 +45,6 @@ func Setup() {
 		[]UserBasic{},
 	)
 
-	// if err := createDB([]Pomodoro{}); err != nil {
-	// 	log.Default().Panicf("[error] the Pomodoro database is failed to create. Error: %+v", err)
-	// }
-
-	// if err := createDB([]Todo{}); err != nil {
-	// 	log.Default().Panicf("[error] the Todo database is failed to create. Error: %+v", err)
-	// }
-
 	log.Default().Printf("the databases are successfully loaded")
 }
 

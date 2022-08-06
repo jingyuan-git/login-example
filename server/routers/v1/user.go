@@ -36,10 +36,16 @@ func Login(c *gin.Context) {
 		return
 	}
 
-	token, err := helper.GenerateToken(user.Identity, user.Mail)
+	token, err := helper.GenerateToken(user.Identity, user.Email)
 
 	data := make(map[string]interface{})
-	data["token"] = token
+	data["access_token"] = token
+	userInfo := make(map[string]interface{})
+	userInfo["email"] = user.Email
+	userInfo["nickname"] = user.Nickname
+	userInfo["phone"] = user.Phone
+	userInfo["gender"] = user.Gender
+	data["user_info"] = userInfo
 
 	appG.Response(http.StatusOK, e.SUCCESS, data)
 }
@@ -57,7 +63,7 @@ func Register(c *gin.Context) {
 
 	err := userService.Register()
 	if err != nil {
-		appG.Response(http.StatusInternalServerError, e.ERROR, nil)
+		appG.Response(http.StatusInternalServerError, e.ERROR, err)
 		return
 	}
 
