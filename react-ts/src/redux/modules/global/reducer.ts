@@ -25,6 +25,9 @@ const global = (state: GlobalState = globalState, action: AnyAction) =>
 			case types.SET_TOKEN:
 				draftState.token = action.token;
 				break;
+			case types.SET_USRINFO:
+				draftState.userInfo = action.userInfo;
+				break;
 			case types.SET_ASSEMBLY_SIZE:
 				draftState.assemblySize = action.assemblySize;
 				break;

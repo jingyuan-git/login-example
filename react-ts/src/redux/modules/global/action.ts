@@ -6,6 +6,12 @@ export const setToken = (token: string) => ({
 	token
 });
 
+// * setuserInfo
+export const setUserInfo = (userInfo: string) => ({
+	type: types.SET_USRINFO,
+	userInfo
+});
+
 // * setAssemblySize
 export const setAssemblySize = (assemblySize: string) => ({
 	type: types.SET_ASSEMBLY_SIZE,

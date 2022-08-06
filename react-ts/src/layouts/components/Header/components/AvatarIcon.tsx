@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { HOME_URL } from "@/config/config";
 import { connect } from "react-redux";
 import { setToken } from "@/redux/modules/global/action";
-import PasswordModal from "./PasswordModal";
 import InfoModal from "./InfoModal";
 import avatar from "@/assets/images/avatar.png";
 
@@ -14,22 +13,21 @@ const AvatarIcon = (props: any) => {
 	const navigate = useNavigate();
 
 	interface ModalProps {
-		showModal: (params: { name: number }) => void;
+		showModal: (params: {}) => void;
 	}
-	const passRef = useRef<ModalProps>(null);
 	const infoRef = useRef<ModalProps>(null);
 
 	// 退出登录
 	const logout = () => {
 		Modal.confirm({
-			title: "温馨提示 🧡",
+			title: "Warm prompt 🧡",
 			icon: <ExclamationCircleOutlined />,
-			content: "是否确认退出登录？",
-			okText: "确认",
-			cancelText: "取消",
+			content: "Are you sure you want to log out?",
+			okText: "Confirm",
+			cancelText: "Cancel",
 			onOk: () => {
 				setToken("");
-				message.success("退出登录成功！");
+				message.success("Logout succeeded!");
 				navigate("/login");
 			}
 		});
@@ -41,25 +39,20 @@ const AvatarIcon = (props: any) => {
 			items={[
 				{
 					key: "1",
-					label: <span className="dropdown-item">首页</span>,
+					label: <span className="dropdown-item">Home page</span>,
 					onClick: () => navigate(HOME_URL)
 				},
 				{
 					key: "2",
-					label: <span className="dropdown-item">个人信息</span>,
-					onClick: () => infoRef.current!.showModal({ name: 11 })
-				},
-				{
-					key: "3",
-					label: <span className="dropdown-item">修改密码</span>,
-					onClick: () => passRef.current!.showModal({ name: 11 })
+					label: <span className="dropdown-item">User profile</span>,
+					onClick: () => infoRef.current!.showModal({})
 				},
 				{
 					type: "divider"
 				},
 				{
-					key: "4",
-					label: <span className="dropdown-item">退出登录</span>,
+					key: "3",
+					label: <span className="dropdown-item">Log Out</span>,
 					onClick: logout
 				}
 			]}
@@ -71,7 +64,6 @@ const AvatarIcon = (props: any) => {
 				<Avatar size="large" src={avatar} />
 			</Dropdown>
 			<InfoModal innerRef={infoRef}></InfoModal>
-			<PasswordModal innerRef={passRef}></PasswordModal>
 		</>
 	);
 };

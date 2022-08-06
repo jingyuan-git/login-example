@@ -6,13 +6,14 @@ import { Login } from "@/api/interface";
 import { loginApi } from "@/api/modules/login";
 import { HOME_URL } from "@/config/config";
 import { connect } from "react-redux";
-import { setToken } from "@/redux/modules/global/action";
+import { setToken, setUserInfo } from "@/redux/modules/global/action";
 import { useTranslation } from "react-i18next";
 import { UserOutlined, LockOutlined, CloseCircleOutlined } from "@ant-design/icons";
 
 const LoginForm = (props: any) => {
 	const { t } = useTranslation();
 	const { setToken } = props;
+	const { setUserInfo } = props;
 	const navigate = useNavigate();
 	const [form] = Form.useForm();
 	const [loading, setLoading] = useState<boolean>(false);
@@ -25,7 +26,8 @@ const LoginForm = (props: any) => {
 			console.log("loginForm", loginForm)
 			const { data } = await loginApi(loginForm);
 			setToken(data?.access_token);
-			message.success("登录成功！");
+			setUserInfo(data?.user_info)
+			message.success("Login success!");
 			navigate(HOME_URL);
 		} finally {
 			setLoading(false);
@@ -92,7 +94,7 @@ const LoginForm = (props: any) => {
 			</Form.Item>
 
 			<Form.Item wrapperCol={{ offset: 8, span: 16 }} >
-				<Button type="primary" htmlType="submit" className="login-btn">
+				<Button type="primary" htmlType="submit" className="login-btn" loading={loading} icon={<UserOutlined />}>
 					Login
 				</Button>
 				Or <a href="#/register">register now!</a>
@@ -101,5 +103,5 @@ const LoginForm = (props: any) => {
 	);
 };
 
-const mapDispatchToProps = { setToken };
+const mapDispatchToProps = { setToken, setUserInfo };
 export default connect(null, mapDispatchToProps)(LoginForm);

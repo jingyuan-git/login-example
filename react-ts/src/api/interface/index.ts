@@ -23,7 +23,7 @@ export interface ReqPage {
 	pageSize: number;
 }
 
-// * 登录
+// * login
 export namespace Login {
 	export interface ReqLoginForm {
 		email: string;
@@ -31,13 +31,22 @@ export namespace Login {
 	}
 	export interface ResLogin {
 		access_token: string;
+		user_info: UserInfo;
 	}
 	export interface ResAuthButtons {
 		[propName: string]: any;
 	}
 }
 
-// * 登录
+// UserInfo 
+export interface UserInfo {
+	email: string,
+	nickname: string,
+	phone: string,
+	gender: string,
+}
+
+// * register
 export namespace Register {
 	export interface ReqRegisterForm {
 		password: string,
@@ -47,7 +56,6 @@ export namespace Register {
 		gender: string,
 	}
 	export interface ResRegister {
-		access_token: string;
 	}
 	export interface ResAuthButtons {
 		[propName: string]: any;

@@ -6,10 +6,12 @@ import AssemblySize from "./components/AssemblySize";
 import Language from "./components/Language";
 import Theme from "./components/Theme";
 import Fullscreen from "./components/Fullscreen";
+import { store } from "@/redux";
 import "./index.less";
 
 const LayoutHeader = () => {
 	const { Header } = Layout;
+	const ninkName = store.getState().global.userInfo.nickname
 
 	return (
 		<Header>
@@ -22,7 +24,7 @@ const LayoutHeader = () => {
 				<Language />
 				<Theme />
 				<Fullscreen />
-				<span className="username">Hooks</span>
+				<span className="username"> {ninkName}</span>
 				<AvatarIcon />
 			</div>
 		</Header>
