@@ -1,0 +1,58 @@
+version: '3.8'
+
+services:
+  pgsql-mt:
+    image: postgres
+    container_name: pgsql-mt
+    volumes:
+      - ./postgre/init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./postgre/db-data/:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=mt-db
+    ports:
+      - 15432:5432
+    networks:
+      - backend-mt
+    privileged: true
+    restart: always
+
+  pgadmin4-mt:
+    image: dpage/pgadmin4
+    container_name: pgadmin4-mt
+    ports:
+      - 15050:80
+    environment:
+      PGADMIN_DEFAULT_EMAIL: name@example.com
+      PGADMIN_DEFAULT_PASSWORD: admin
+    restart: always
+    networks:
+      - frontend-mt
+      - backend-mt
+
+  backend-mt:
+    image: nginx-backend-mt:v1.0.1
+    container_name: backend-mt
+    build:
+      context: ./server
+    depends_on:
+      - pgsql-mt
+    networks:
+      - backend-mt
+    restart: always
+
+  frontend-mt:
+    image: nginx-frontend-mt:v1.0.1
+    container_name: frontend-mt
+    build:
+      context: ./react-ts
+    ports:
+      - "18080:8080"
+    networks:
+      - frontend-mt
+      - backend-mt
+    restart: always
+networks:
+  frontend-mt:
+  backend-mt:
