@@ -40,6 +40,12 @@ func Login(c *gin.Context) {
 
 	data := make(map[string]interface{})
 	data["access_token"] = token
+	userInfo := make(map[string]interface{})
+	userInfo["email"] = user.Email
+	userInfo["nickname"] = user.Nickname
+	userInfo["phone"] = user.Phone
+	userInfo["gender"] = user.Gender
+	data["user_info"] = userInfo
 
 	appG.Response(http.StatusOK, e.SUCCESS, data)
 }
