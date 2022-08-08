@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"net/http"
@@ -15,7 +16,11 @@ import (
 )
 
 func init() {
-	setting.Setup()
+	var env string
+	flag.StringVar(&env, "env", "prod", "production(prod) env or development(dev) environment")
+	flag.Parse()
+
+	setting.Setup(&env)
 	models.Setup()
 	logging.Setup()
 }
@@ -25,7 +30,7 @@ func main() {
 
 	routersInit := routers.InitRouter()
 	readTimeout := time.Duration(setting.ServerSetting.ReadTimeout) * time.Second
-	writeTimeout := time.Duration(setting.ServerSetting.WriteTimeout) *	 time.Second
+	writeTimeout := time.Duration(setting.ServerSetting.WriteTimeout) * time.Second
 	addrUrl := fmt.Sprintf("%s:%d", setting.ServerSetting.Host, setting.ServerSetting.HttpPort)
 	maxHeaderBytes := 1 << 20
 
