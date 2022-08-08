@@ -28,7 +28,7 @@ type User struct {
 }
 
 func (a *User) Register() error {
-	// 数据的插入
+	// add data
 	userIdentity := helper.GetUUID()
 
 	user := models.UserBasic{
@@ -37,6 +37,8 @@ func (a *User) Register() error {
 		Identity:  userIdentity,
 		Password:  helper.GetMd5(a.Password),
 		Email:     a.Email,
+		Phone:     a.Phone,
+		Gender:    a.Gender,
 	}
 
 	fmt.Printf("service %+v/n", user)
