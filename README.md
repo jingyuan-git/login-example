@@ -12,12 +12,12 @@
    - gin
    - react
    - IDE recommendation: VSCode
-   - docker-compose
+   - docker-compose==1.25.5
   
 
     ```bash
     # clone the project
-    git clone https://github.com/jingyuan-git/pomotodo
+    git clone https://github.com/jingyuan-git/system-monitoring-tools
 
     # create an database for pomotodo in PostgreSQL
     # and than will write database-related information into the configuration
@@ -118,4 +118,6 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
     ```
 
 # 4. Project Display
-[Project Address](http://101.200.132.209:18080/)
+- [Web Address](http://101.200.132.209:18080/)
+- [PG Admin Address](http://101.200.132.209:15050/) (DEFAULT_EMAIL: name@example.com DEFAULT_PASSWORD: admin)
+
