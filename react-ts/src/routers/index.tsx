@@ -3,7 +3,7 @@ import { RouteObject } from "@/routers/interface";
 import Login from "@/views/login/index";
 import Register from "@/views/register/index";
 
-// * 导入所有router
+// * import all routers
 // const metaRouters = import.meta.globEager("./modules/*.tsx");
 const metaRouters: Record<string, {
 	[key: string]: any;
@@ -26,7 +26,7 @@ export const rootRouter: RouteObject[] = [
 		element: <Login />,
 		meta: {
 			requiresAuth: false,
-			title: "登录页",
+			title: "login page",
 			key: "login"
 		}
 	},
@@ -35,7 +35,7 @@ export const rootRouter: RouteObject[] = [
 		element: <Register />,
 		meta: {
 			requiresAuth: false,
-			title: "注册页",
+			title: "register page",
 			key: "register"
 		}
 	},

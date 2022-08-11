@@ -1,6 +1,6 @@
-// * 请求枚举配置
+// * request enumeration configuration
 /**
- * @description：请求配置
+ * @description：result types
  */
 export enum ResultEnum {
 	SUCCESS = 200,
@@ -11,7 +11,7 @@ export enum ResultEnum {
 }
 
 /**
- * @description：请求方法
+ * @description：request methods
  */
 export enum RequestEnum {
 	GET = "GET",
@@ -22,7 +22,7 @@ export enum RequestEnum {
 }
 
 /**
- * @description：常用的contentTyp类型
+ * @description：common content types
  */
 export enum ContentTypeEnum {
 	// json

@@ -5,7 +5,7 @@ import { RouteObject } from "@/routers/interface";
 import Dashboard from "@/views/dashboard/index";
 
 
-// dashboard 模块
+// dashboard router
 const dashboardRouter: Array<RouteObject> = [
 	{
 		element: <LayoutIndex />,

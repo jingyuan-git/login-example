@@ -14,7 +14,7 @@ const Fullscreen = () => {
 	}, []);
 
 	const handleFullScreen = () => {
-		if (!screenfull.isEnabled) message.warning("当前您的浏览器不支持全屏 ❌");
+		if (!screenfull.isEnabled) message.warning("Your browser does not currently support full screen ❌");
 		screenfull.toggle();
 	};
 	return (

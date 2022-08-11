@@ -1,8 +1,8 @@
 import { RouteObject } from "@/routers/interface";
 
 /**
- * @description 获取localStorage
- * @param {String} key Storage名称
+ * @description get localStorage
+ * @param {String} key Storage key
  * @return string
  */
 export const localGet = (key: string) => {
@@ -15,9 +15,9 @@ export const localGet = (key: string) => {
 };
 
 /**
- * @description 存储localStorage
- * @param {String} key Storage名称
- * @param {Any} value Storage值
+ * @description store localStorage
+ * @param {String} key Storage key
+ * @param {Any} value Storage value
  * @return void
  */
 export const localSet = (key: string, value: any) => {
@@ -25,8 +25,8 @@ export const localSet = (key: string, value: any) => {
 };
 
 /**
- * @description 清除localStorage
- * @param {String} key Storage名称
+ * @description remove localStorage
+ * @param {String} key Storage key
  * @return void
  */
 export const localRemove = (key: string) => {
@@ -34,7 +34,7 @@ export const localRemove = (key: string) => {
 };
 
 /**
- * @description 清除所有localStorage
+ * @description clear all localStorage
  * @return void
  */
 export const localClear = () => {
@@ -42,7 +42,7 @@ export const localClear = () => {
 };
 
 /**
- * @description 获取浏览器默认语言
+ * @description get browser default language
  * @return string
  */
 export const getBrowserLang = () => {
@@ -57,8 +57,8 @@ export const getBrowserLang = () => {
 };
 
 /**
- * @description 获取需要展开的 subMenu
- * @param {String} path 当前访问地址
+ * @description get the subMenu that needs to be expanded
+ * @param {String} path current path
  * @returns array
  */
 export const getOpenKeys = (path: string) => {
@@ -73,9 +73,9 @@ export const getOpenKeys = (path: string) => {
 };
 
 /**
- * @description 递归查询对应的路由
- * @param {String} path 当前访问地址
- * @param {Array} routes 路由列表
+ * @description recursively query the corresponding route
+ * @param {String} path current path
+ * @param {Array} routes list
  * @returns array
  */
 export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObject => {
@@ -91,9 +91,9 @@ export const searchRoute = (path: string, routes: RouteObject[] = []): RouteObje
 };
 
 /**
- * @description 递归当前路由的 所有 关联的路由，生成面包屑导航栏
- * @param {String} path 当前访问地址
- * @param {Array} menuList 菜单列表
+ * @description recursively all the routes associated with the current route to generate the breadcrumb navigation bar
+ * @param {String} path current path
+ * @param {Array} menuList
  * @returns array
  */
 export const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) => {
@@ -125,8 +125,8 @@ export const getBreadcrumbList = (path: string, menuList: Menu.MenuOptions[]) =>
 };
 
 /**
- * @description 双重递归 找出所有 面包屑 生成对象存到 redux 中，就不用每次都去递归查找了
- * @param {String} menuList 当前菜单列表
+ * @description double recursion to find all breadcrumbs, then generated objects and store them in redux
+ * @param {String} menuList menu list
  * @returns object
  */
 export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]: any } => {
@@ -141,9 +141,9 @@ export const findAllBreadcrumb = (menuList: Menu.MenuOptions[]): { [key: string]
 };
 
 /**
- * @description 使用递归处理路由菜单，生成一维数组，做菜单权限判断
- * @param {Array} menuList 所有菜单列表
- * @param {Array} newArr 菜单的一维数组
+ * @description use recursive processing of routing menus, generate one-dimensional arrays, and judge menu permissions
+ * @param {Array} routerList router list
+ * @param {Array} newArr one-dimensional arrays of menu
  * @return array
  */
 export function handleRouter(routerList: Menu.MenuOptions[], newArr: string[] = []) {
@@ -155,8 +155,8 @@ export function handleRouter(routerList: Menu.MenuOptions[], newArr: string[] = 
 }
 
 /**
- * @description 判断数据类型
- * @param {Any} val 需要判断类型的数据
+ * @description determine the data type
+ * @param {Any} val: need to determine the type of data
  * @return string
  */
 export const isType = (val: any) => {
@@ -166,8 +166,8 @@ export const isType = (val: any) => {
 };
 
 /**
- * @description 对象数组深克隆
- * @param {Object} obj 源对象
+ * @description object deep clone
+ * @param {Object} obj source object
  * @return object
  */
 export const deepCopy = <T>(obj: any): T => {

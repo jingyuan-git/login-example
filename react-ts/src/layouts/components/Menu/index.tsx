@@ -50,23 +50,23 @@ const LayoutMenu = (props: any) => {
 		} as MenuItem;
 	};
 
-	// 动态渲染 Icon 图标
+	// Dynamic Rendering Icon
 	const customIcons: { [key: string]: any } = Icons;
 	const addIcon = (name: string) => {
 		return React.createElement(customIcons[name]);
 	};
 
-	// 处理后台返回菜单 key 值为 antd 菜单需要的 key 值
+	// the key value of the menu returned by the processing background is the key value required by the antd menu
 	const deepLoopFloat = (menuList: Menu.MenuOptions[], newArr: MenuItem[] = []) => {
 		menuList.forEach((item: Menu.MenuOptions) => {
-			// 下面判断代码解释 *** !item?.children?.length   ==>   (!item.children || item.children.length === 0)
+			// !item?.children?.length   ==>   (!item.children || item.children.length === 0)
 			if (!item?.children?.length) return newArr.push(getItem(item.title, item.path, addIcon(item.icon!)));
 			newArr.push(getItem(item.title, item.path, addIcon(item.icon!), deepLoopFloat(item.children)));
 		});
 		return newArr;
 	};
 
-	// 获取菜单列表并处理成 antd menu 需要的格式
+	// get the menu list and process it into the format required by antd menu
 	const [menuList, setMenuList] = useState<MenuItem[]>([]);
 	const [loading, setLoading] = useState(false);
 	const getMenuData = async () => {
@@ -75,9 +75,9 @@ const LayoutMenu = (props: any) => {
 			const { data } = await getMenuList();
 			if (!data) return;
 			setMenuList(deepLoopFloat(data));
-			// 存储处理过后的所有面包屑导航栏到 redux 中
+			// store all processed breadcrumbs in redux
 			setBreadcrumbList(findAllBreadcrumb(data));
-			// 把路由菜单处理成一维数组，存储到 redux 中，做菜单权限判断
+			// process the routing menu into a one-dimensional array, store it in redux, and judge the menu permissions
 			const dynamicRouter = handleRouter(data);
 			setAuthRouter(dynamicRouter);
 			setMenuListAction(data);
@@ -89,7 +89,7 @@ const LayoutMenu = (props: any) => {
 		getMenuData();
 	}, []);
 
-	// 点击当前菜单跳转页面
+	// click the current menu to jump to the page
 	const navigate = useNavigate();
 	const clickMenu: MenuProps["onClick"] = ({ key }: { key: string }) => {
 		const route = searchRoute(key, props.menuList);
