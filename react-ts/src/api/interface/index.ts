@@ -1,15 +1,15 @@
-// * 请求响应参数(不包含data)
+// * response parameters (excluding data)
 export interface Result {
 	code: string;
 	msg: string;
 }
 
-// * 请求响应参数(包含data)
+// * resultData
 export interface ResultData<T = any> extends Result {
 	data?: T;
 }
 
-// * 分页响应参数
+// * pagination response parameters
 export interface ResPage<T> {
 	datalist: T[];
 	pageNum: number;
@@ -17,7 +17,7 @@ export interface ResPage<T> {
 	total: number;
 }
 
-// * 分页请求参数
+// * pagination request parameters
 export interface ReqPage {
 	pageNum: number;
 	pageSize: number;
@@ -38,7 +38,7 @@ export namespace Login {
 	}
 }
 
-// UserInfo 
+// * userInfo 
 export interface UserInfo {
 	email: string,
 	nickname: string,
@@ -62,7 +62,7 @@ export namespace Register {
 	}
 }
 
-// * 用户管理
+// * user management
 export namespace User {
 	export interface ReqGetUserParams extends ReqPage {
 		username: string;

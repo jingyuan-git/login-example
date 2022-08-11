@@ -9,9 +9,8 @@ const globalState: GlobalState = {
 	assemblySize: "middle",
 	language: "",
 	themeConfig: {
-		// 默认 primary 主题颜色
+		// default theme color
 		primary: "#1890ff",
-		// 深色模式
 		isDark: false,
 		// 色弱模式(weak) || 灰色模式(gray)
 		weakOrGray: ""

@@ -2,8 +2,8 @@ import React, { Suspense } from "react";
 import { Spin } from "antd";
 
 /**
- * @description 路由懒加载
- * @param {Element} Comp 需要访问的组件
+ * @description router lazy load
+ * @param {Element} Comp: components that need to be accessed
  * @returns element
  */
 const lazyLoad = (Comp: React.LazyExoticComponent<any>): React.ReactNode => {

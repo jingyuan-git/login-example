@@ -5,15 +5,15 @@ import qs from "qs";
 import http from "@/api";
 
 /**
- * @name 登录模块
+ * @name login module
  */
-// * 用户登录接口
+// * user login interface
 export const loginApi = (params: Login.ReqLoginForm) => {
 	return http.post<Login.ResLogin>(PORT1 + `/users/login`, params);
 };
 
 
-// * 获取菜单列表
+// * get menu list
 export const getMenuList = () => {
 	return http.get<Menu.MenuOptions[]>(PORT1 + `/menu/list`);
 };

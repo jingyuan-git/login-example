@@ -4,7 +4,8 @@ import { PORT1 } from "@/api/config/servicePort";
 import http from "@/api";
 
 /**
- * @name 用户管理模块
+ * todo
+ * @name User management module
  */
 // * 获取用户列表
 export const getUserList = (params: Partial<User.ReqGetUserParams>) => {
